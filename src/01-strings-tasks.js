@@ -213,7 +213,7 @@ function getRectangleString(/* width, height */) {
   // for (let i = 0; i <= height; i += 1) {
   //   for (let j = 0; j <= width; j += 1) {
   //     switch (i) {
-  //     case 0: result = 
+  //     case 0: result =
   //   }
   // }
   // let result = '';
