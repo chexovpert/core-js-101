@@ -32,7 +32,8 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-  throw new Error('Not implemented');
+  const reg = new RegExp(/^{(([a-fA-F0-9]{8}-)([a-fA-F0-9]{4}-){3}([a-fA-F0-9]{12}))}$/);
+  return reg;
 }
 
 
@@ -54,7 +55,9 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-  throw new Error('Not implemented');
+  // const reg = new RegExp(/^\bpit\b|\bspot\b|\bspate\b|\bslap two\b|\brespite\b/);
+  const reg = new RegExp(/\w+(p|i| )\w/); // \w{0,} ?
+  return reg;
 }
 
 
@@ -78,8 +81,9 @@ function getRegexForPitSpot() {
  *   'PASSW0RD'.match(validator)  => false
  *   'Pa55'.match(validator) => false
  */
-function getPasswordValidator(/* minLength */) {
-  throw new Error('Not implemented');
+function getPasswordValidator(minLength) {
+  const reg = new RegExp(`^(?!.*[_ ])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{${minLength},}$`);
+  return reg;
 }
 
 

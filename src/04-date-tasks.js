@@ -19,8 +19,9 @@
  *    'Tue, 26 Jan 2016 13:48:02 GMT' => Date()
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
-function parseDataFromRfc2822(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromRfc2822(value) {
+  const result = new Date(value);
+  return result;
 }
 
 /**
@@ -34,8 +35,9 @@ function parseDataFromRfc2822(/* value */) {
  *    '2016-01-19T16:07:37+00:00'    => Date()
  *    '2016-01-19T08:07:37Z' => Date()
  */
-function parseDataFromIso8601(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromIso8601(value) {
+  const result = new Date(value);
+  return result;
 }
 
 
@@ -53,8 +55,12 @@ function parseDataFromIso8601(/* value */) {
  *    Date(2012,1,1)    => true
  *    Date(2015,1,1)    => false
  */
-function isLeapYear(/* date */) {
-  throw new Error('Not implemented');
+function isLeapYear(date) {
+  const yer = date.getFullYear();
+  if (yer % 4 !== 0 || ((yer % 100 === 0) && (yer % 400 !== 0))) {
+    return false;
+  }
+  return true;
 }
 
 
@@ -73,8 +79,33 @@ function isLeapYear(/* date */) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,10,0,0,250)     => "00:00:00.250"
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
-function timeSpanToString(/* startDate, endDate */) {
-  throw new Error('Not implemented');
+function timeSpanToString(startDate, endDate) {
+  // let hours = startDate.getHours() - endDate.getHours();
+  // let minutes = startDate.getMinutes() - endDate.getMinutes();
+  // let seconds = startDate.getSeconds() - endDate.getSeconds();
+
+  const result = endDate - startDate;
+  let milseconds = Math.round(result);
+  let seconds = Math.round(milseconds / 1000);
+  let minutes = Math.round(seconds / 60);
+  let hours = Math.floor(minutes / 60);
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  minutes -= (hours * 60);
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  seconds -= (hours * 60 * 60);
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  milseconds -= (hours * 60 * 60 * 1000);
+  if (milseconds < 100) {
+    milseconds = `00${milseconds}`;
+  }
+  // return result.toDateString();
+  return `${hours}:${minutes}:${seconds}.${milseconds}`;
 }
 
 

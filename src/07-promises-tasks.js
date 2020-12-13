@@ -30,8 +30,21 @@
  */
 function willYouMarryMe(/* isPositiveAnswer */) {
   throw new Error('Not implemented');
+  // return new Promise(function(resolve, reject) {
+  //   let answer = '';
+  //   if(isPositiveAnswer === true && typeof isPositiveAnswer === 'bollean') {
+  //     answer = 'Hooray!!! She said "Yes"!'
+  //     resolve(answer);
+  //   }
+  //   if(isPositiveAnswer === false && typeof isPositiveAnswer === 'boolean') {
+  //     answer = 'Hooray!!! She said "Yes"!'
+  //     resolve(answer);
+  //   }
+  //   reject(new Error(`Error: Wrong parameter is passed! Ask her again.`));
+  // });
 }
-
+// return isPositiveAnswer ? resolve('Hooray!!! She said "Yes"')
+// : reject ('Oh no, she said "No".');
 
 /**
  * Return Promise object that should be resolved with array containing plain values.
